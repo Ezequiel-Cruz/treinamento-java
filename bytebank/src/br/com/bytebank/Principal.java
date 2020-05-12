@@ -1,17 +1,21 @@
 package br.com.bytebank;
 
-import br.com.bytebank.model.Funcionario;
+import br.com.bytebank.model.Tipo;
+import br.com.bytebank.registrador.Pagamento;
+import br.com.bytebank.registrador.RegistroDePagamento;
 
-import java.time.LocalDate;
+import java.util.Arrays;
+import java.util.List;
 
 public class Principal {
 
     public static void main(String[] args) {
-        System.out.println("Bem vindo ao Bytebank!");
-        Funcionario jose = new Funcionario("José", 1, LocalDate.of(1990,2,10));
-        Funcionario maria = new Funcionario("Maria", 2, LocalDate.of(1988,1,15));
+        Pagamento almoco = new Pagamento("Almoço na feijuca", Tipo.DEBITO, 20);
+        Pagamento videogame = new Pagamento("PS4", Tipo.CREDITO, 1020);
 
-        System.out.println(jose);
-        System.out.println(maria);
+        List<Pagamento> pagamentos = Arrays.asList(almoco, videogame);
+
+        RegistroDePagamento registrador = new RegistroDePagamento();
+        registrador.registra(pagamentos);
     }
 }
