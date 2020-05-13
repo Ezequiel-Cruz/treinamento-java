@@ -5,7 +5,7 @@ public class TiposPrimitivos {
         byte valorEmByte = 10;
         short valorInteiroPequeno = 1;
         long valorInteiroGrande = 120;
-        float numeroFlutuante = 5.5;
+        // float numeroFlutuante = 5.5;
         double numeroFlutuante2 = 6.6;
         char character = 'a';
         boolean btrue = true;
