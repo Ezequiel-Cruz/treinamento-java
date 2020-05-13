@@ -12,9 +12,19 @@ public class Fatorial {
 	    System.out.println("");
 
         for (int i = 1; i <= entrada; i++) {
-		
+        
             fatorial *= i;			
             System.out.println( i + "!= " + fatorial);	
+        }
+
+        System.out.println(fator(1));	
+    }
+
+    public static int fator(int n) {
+        if (n > 1) {
+            return n * fator(n-1);
+        } else {
+            return 1;
         }
     }
 }
