@@ -8,5 +8,25 @@ public class EstruturaDeControle {
         } else {
             System.out.println("O número informado não é par!");
         }
+
+        int numero2 = 3;
+
+        switch(numero2) {
+            case 0:
+                System.out.println("O numero é zero");
+                break;
+            case 1:
+                System.out.println("O numero é um");
+                break;
+            case 2:
+                System.out.println("O numero é dois");
+                break;
+            case 3:
+                System.out.println("O numero é três");
+                break;
+            default:
+                System.out.println("O numero não foi mapeado");
+                break;
+        }
     }
 }
