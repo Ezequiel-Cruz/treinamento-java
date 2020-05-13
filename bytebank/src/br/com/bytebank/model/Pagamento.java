@@ -1,19 +1,18 @@
-package br.com.bytebank.registrador;
-
-import br.com.bytebank.model.Tipo;
+package br.com.bytebank.model;
 
 import java.time.LocalDate;
 
 public class Pagamento {
+
     private String descricao;
     private Tipo tipo;
     private double valor;
     private LocalDate data;
 
-    public Pagamento(String descricao, Tipo tipo, double valor) {
-        this.descricao = descricao;
+    public Pagamento(Tipo tipo, double valor, String descricao) {
         this.tipo = tipo;
         this.valor = valor;
+        this.descricao = descricao;
         this.data = LocalDate.now();
     }
 
