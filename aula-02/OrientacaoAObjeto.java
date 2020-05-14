@@ -69,11 +69,12 @@ public class OrientacaoAObjeto {
         System.out.println("Exibindo forma geométrica c1: " + c1);
         System.out.println("Exibindo forma geométrica q1: " + q1);
 
-        List<Quadrado> formasQuadrado = new ArrayList();
-        formasQuadrado.add(q1);
+        List<FormaGeometrica> formas = new ArrayList();
+        formas.add(q1);
+        formas.add(c1);
 
-        for(Quadrado q: formasQuadrado) {
-            System.out.println("Lista: " + q);
+        for(FormaGeometrica q: formas) {
+            System.out.println(q);
         }
 
     }
