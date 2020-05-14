@@ -66,8 +66,8 @@ public class OrientacaoAObjeto {
         Circulo c1 = new Circulo(10, 0, 0, 0);
         Quadrado q1 = new Quadrado(10, 10, 15, 15, 15);
 
-        System.out.println("Exibindo forma geométrica c1: " + c1);
-        System.out.println("Exibindo forma geométrica q1: " + q1);
+        // System.out.println("Exibindo forma geométrica c1: " + c1);
+        // System.out.println("Exibindo forma geométrica q1: " + q1);
 
         List<FormaGeometrica> formas = new ArrayList();
         formas.add(q1);
