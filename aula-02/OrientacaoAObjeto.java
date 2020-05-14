@@ -1,3 +1,5 @@
+import java.util.ArrayList; //interface
+import java.util.List; // Implementação da Interface
 
 class Ponto {
     protected int posicaoX;
@@ -66,5 +68,13 @@ public class OrientacaoAObjeto {
 
         System.out.println("Exibindo forma geométrica c1: " + c1);
         System.out.println("Exibindo forma geométrica q1: " + q1);
+
+        List<Quadrado> formasQuadrado = new ArrayList();
+        formasQuadrado.add(q1);
+
+        for(Quadrado q: formasQuadrado) {
+            System.out.println("Lista: " + q);
+        }
+
     }
 }
