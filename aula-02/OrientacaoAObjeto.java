@@ -29,6 +29,11 @@ interface Forma2D {
     FormaGeometrica extrusaoLinear(int altura);
 }
 
+interface Forma3D {
+    FormaGeometrica extrusaoLinear(int largura, int comprimento);
+}
+
+
 class Quadrado extends FormaGeometrica implements Forma2D {
     protected int largura;
     protected int comprimento;
@@ -82,6 +87,10 @@ class Cubo extends FormaGeometrica {
      public String toString() {
         return "largura: " + this.largura + " comprimento: " + this.comprimento + " altura: " + this.altura + super.toString();
     }
+
+     public Quadrado extrusaoLinear(int largura, int comprimento) {
+        return new Quadrado(this.largura, this.comprimento, this.pontoCentral.posicaoX, this.pontoCentral.posicaoY, this.pontoCentral.posicaoZ);
+    }
 }
 
 class Cilindro extends FormaGeometrica {
@@ -110,10 +119,13 @@ public class OrientacaoAObjeto {
 
         Cubo cb1 = q1.extrusaoLinear(7);
 
+        Quadrado q2 = cb1.extrusaoLinear(10,10);
+
         List<FormaGeometrica> formas = new ArrayList();
         formas.add(q1);
         formas.add(c1);
         formas.add(cb1);
+        formas.add(q2);
 
         for(FormaGeometrica q: formas) {
             System.out.println(q);
