@@ -30,7 +30,7 @@ interface Forma2D {
 }
 
 interface Forma3D {
-    FormaGeometrica extrusaoLinear(int largura, int comprimento);
+    FormaGeometrica projecao();
 }
 
 
@@ -70,7 +70,7 @@ class Circulo extends FormaGeometrica {
     }
 }
 
-class Cubo extends FormaGeometrica {
+class Cubo extends FormaGeometrica implements Forma3D {
     protected int largura;
     protected int comprimento;
     protected int altura;
@@ -88,8 +88,8 @@ class Cubo extends FormaGeometrica {
         return "largura: " + this.largura + " comprimento: " + this.comprimento + " altura: " + this.altura + super.toString();
     }
 
-     public Quadrado extrusaoLinear(int largura, int comprimento) {
-        return new Quadrado(this.largura, this.comprimento, this.pontoCentral.posicaoX, this.pontoCentral.posicaoY, this.pontoCentral.posicaoZ);
+     public Quadrado projecao() {
+        return new Quadrado(this.largura, this.comprimento, this.pontoCentral.posicaoX, this.pontoCentral.posicaoY, 0);
     }
 }
 
@@ -119,7 +119,7 @@ public class OrientacaoAObjeto {
 
         Cubo cb1 = q1.extrusaoLinear(7);
 
-        Quadrado q2 = cb1.extrusaoLinear(10,10);
+        Quadrado q2 = cb1.projecao();
 
         List<FormaGeometrica> formas = new ArrayList();
         formas.add(q1);
