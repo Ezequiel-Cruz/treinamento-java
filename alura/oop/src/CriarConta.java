@@ -1,30 +1,62 @@
 
 public class CriarConta {
     public static void main(String[] args) {
-        Conta joao = new Conta();
-        Conta lucas = new Conta();
-        Conta luiz = new Conta();
+        Cliente joao = new Cliente();
+        Cliente lucas = new Cliente();
+        Cliente luiz = new Cliente();
+        
+        joao.nome = "João Costa Silva";
+        joao.cpf = "332.331.231-98";
+        joao.profissao = "Analista de Contas";
 
-        joao.saldo = 200;
+        lucas.nome = "Lucas Alburquerque";
+        lucas.cpf = "111.111.111-11";
+        lucas.profissao = "Gerente de Produção";
 
-        System.out.println("Primeira Conta: " + joao.saldo);
+        luiz.nome = "Luiz de Bragança";
+        luiz.cpf = "515.151.515-00";
+        luiz.profissao = "Programador";
 
-        joao.saldo += 120;
-        System.out.println("Primeira Conta Saldo Atualizado: " + joao.saldo);
+        Conta contaJoao = new Conta();
+        Conta contaLucas = new Conta();
+        Conta contaLuiz = new Conta();
 
-        lucas.saldo = 550;
-        lucas.deposita(100);
+        contaJoao.titular = joao;
+        contaLucas.titular = lucas;
+        contaLuiz.titular = luiz;
 
-        System.out.println("Segunda conta: " + lucas.saldo);
+        contaJoao.saldo = 200;
+        contaLucas.saldo = 550;
+        contaLuiz.saldo = 1900;
 
-        joao.saca(50);
-        System.out.println("Saldo da conta apos saque: " + joao.saldo);
+        System.out.println(contaJoao.titular.nome);
+        System.out.println("Saldo: " + contaJoao.saldo);
 
-        luiz.deposita(1000);
-        luiz.transfere(300, joao);
+        System.out.println(contaLucas.titular.nome);
+        System.out.println("Saldo: " + contaLucas.saldo);
 
-        System.out.println("Saldo Luiz: " + luiz.saldo);
-        System.out.println("Saldo Lucas: " + lucas.saldo);
-        System.out.println("Saldo João: " + joao.saldo);
+        System.out.println(contaLuiz.titular.nome);
+        System.out.println("Saldo: " + contaLuiz.saldo);
+
+        System.out.println("-------------------------");
+        System.out.println("Saldo após operações: ");
+
+        contaJoao.deposita(300);
+        contaLucas.deposita(200);
+        contaLuiz.deposita(200);
+
+        contaLucas.saca(20);
+
+        contaLuiz.transfere(100, contaJoao);
+
+        System.out.println(contaJoao.titular.nome);
+        System.out.println("Saldo: " + contaJoao.saldo);
+
+        System.out.println(contaLucas.titular.nome);
+        System.out.println("Saldo: " + contaLucas.saldo);
+
+        System.out.println(contaLuiz.titular.nome);
+        System.out.println("Saldo: " + contaLuiz.saldo);
+
     }
 }
