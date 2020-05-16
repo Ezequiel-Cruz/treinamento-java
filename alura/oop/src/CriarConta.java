@@ -25,18 +25,18 @@ public class CriarConta {
         contaLucas.titular = lucas;
         contaLuiz.titular = luiz;
 
-        contaJoao.saldo = 200;
-        contaLucas.saldo = 550;
-        contaLuiz.saldo = 1900;
+        contaJoao.deposita(200);
+        contaLucas.deposita(550);
+        contaLuiz.deposita(1900);
 
         System.out.println(contaJoao.titular.nome);
-        System.out.println("Saldo: " + contaJoao.saldo);
+        System.out.println("Saldo: " + contaJoao.pegaSaldo());
 
         System.out.println(contaLucas.titular.nome);
-        System.out.println("Saldo: " + contaLucas.saldo);
+        System.out.println("Saldo: " + contaLucas.pegaSaldo());
 
         System.out.println(contaLuiz.titular.nome);
-        System.out.println("Saldo: " + contaLuiz.saldo);
+        System.out.println("Saldo: " + contaLuiz.pegaSaldo());
 
         System.out.println("-------------------------");
         System.out.println("Saldo após operações: ");
@@ -50,15 +50,15 @@ public class CriarConta {
         contaLuiz.transfere(100, contaJoao);
 
         System.out.println(contaJoao.titular.nome);
-        System.out.println("Saldo: " + contaJoao.saldo);
+        System.out.println("Saldo: " + contaJoao.pegaSaldo());
         System.out.println("Profissão: " + contaJoao.titular.profissao);
 
         System.out.println(contaLucas.titular.nome);
-        System.out.println("Saldo: " + contaLucas.saldo);
+        System.out.println("Saldo: " + contaLucas.pegaSaldo());
         System.out.println("Profissão: " + contaLucas.titular.profissao);
 
         System.out.println(contaLuiz.titular.nome);
-        System.out.println("Saldo: " + contaLuiz.saldo);
+        System.out.println("Saldo: " + contaLuiz.pegaSaldo());
         System.out.println("Profissão: " + contaLuiz.titular.profissao);
 
     }
