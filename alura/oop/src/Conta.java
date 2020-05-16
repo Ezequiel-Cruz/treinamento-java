@@ -37,14 +37,22 @@ public class Conta {
     }
 
     public void setNumero(int numero) {
+        if (numero <= 0) {
+            System.out.println("Não pode valor menor ou igual a zero!");
+            return;
+        }
         this.numero = numero;
     }
 
     public int getAgencia() {
-        return agencia;
+        return this.agencia;
     }
 
     public void setAgencia(int agencia) {
+        if (agencia <= 0) {
+            System.out.println("Não pode haver agencia zerada!");
+            return;
+        }
         this.agencia = agencia;
     }
 
