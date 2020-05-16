@@ -12,11 +12,10 @@ public class CriarConta {
         System.out.println("Primeira Conta Saldo Atualizado: " + primeiraConta.saldo);
 
         segundaConta.saldo = 550;
+        segundaConta.deposita(100);
         System.out.println("Segunda conta: " + segundaConta.saldo);
 
         System.out.println("Agencia: " + primeiraConta.agencia );
         System.out.println("Agencia: " + segundaConta.agencia );
-
-
     }
 }
