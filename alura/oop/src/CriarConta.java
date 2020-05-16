@@ -1,22 +1,30 @@
 
 public class CriarConta {
     public static void main(String[] args) {
-        Conta primeiraConta = new Conta();
-        Conta segundaConta = new Conta();
+        Conta joao = new Conta();
+        Conta lucas = new Conta();
+        Conta luiz = new Conta();
 
-        primeiraConta.saldo = 200;
+        joao.saldo = 200;
 
-        System.out.println("Primeira Conta: " + primeiraConta.saldo);
+        System.out.println("Primeira Conta: " + joao.saldo);
 
-        primeiraConta.saldo += 120;
-        System.out.println("Primeira Conta Saldo Atualizado: " + primeiraConta.saldo);
+        joao.saldo += 120;
+        System.out.println("Primeira Conta Saldo Atualizado: " + joao.saldo);
 
-        segundaConta.saldo = 550;
-        segundaConta.deposita(100);
+        lucas.saldo = 550;
+        lucas.deposita(100);
 
-        System.out.println("Segunda conta: " + segundaConta.saldo);
+        System.out.println("Segunda conta: " + lucas.saldo);
 
-        primeiraConta.saca(50);
-        System.out.println("Saldo da conta apos saque: " + primeiraConta.saldo);
+        joao.saca(50);
+        System.out.println("Saldo da conta apos saque: " + joao.saldo);
+
+        luiz.deposita(1000);
+        luiz.transfere(300, joao);
+
+        System.out.println("Saldo Luiz: " + luiz.saldo);
+        System.out.println("Saldo Lucas: " + lucas.saldo);
+        System.out.println("Saldo João: " + joao.saldo);
     }
 }
