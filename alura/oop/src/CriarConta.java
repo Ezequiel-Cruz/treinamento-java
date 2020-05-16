@@ -51,12 +51,15 @@ public class CriarConta {
 
         System.out.println(contaJoao.titular.nome);
         System.out.println("Saldo: " + contaJoao.saldo);
+        System.out.println("Profissão: " + contaJoao.titular.profissao);
 
         System.out.println(contaLucas.titular.nome);
         System.out.println("Saldo: " + contaLucas.saldo);
+        System.out.println("Profissão: " + contaLucas.titular.profissao);
 
         System.out.println(contaLuiz.titular.nome);
         System.out.println("Saldo: " + contaLuiz.saldo);
+        System.out.println("Profissão: " + contaLuiz.titular.profissao);
 
     }
 }
