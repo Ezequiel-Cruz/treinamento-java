@@ -21,22 +21,22 @@ public class CriarConta {
         Conta contaLucas = new Conta();
         Conta contaLuiz = new Conta();
 
-        contaJoao.titular = joao;
-        contaLucas.titular = lucas;
-        contaLuiz.titular = luiz;
+        contaJoao.setTitular(joao);
+        contaLucas.setTitular(lucas);
+        contaLuiz.setTitular(luiz);
 
         contaJoao.deposita(200);
         contaLucas.deposita(550);
         contaLuiz.deposita(1900);
 
-        System.out.println(contaJoao.titular.nome);
-        System.out.println("Saldo: " + contaJoao.pegaSaldo());
+        System.out.println(contaJoao.getTitular().nome);
+        System.out.println("Saldo: " + contaJoao.getSaldo());
 
-        System.out.println(contaLucas.titular.nome);
-        System.out.println("Saldo: " + contaLucas.pegaSaldo());
+        System.out.println(contaLucas.getTitular().nome);
+        System.out.println("Saldo: " + contaLucas.getSaldo());
 
-        System.out.println(contaLuiz.titular.nome);
-        System.out.println("Saldo: " + contaLuiz.pegaSaldo());
+        System.out.println(contaLuiz.getTitular().nome);
+        System.out.println("Saldo: " + contaLuiz.getSaldo());
 
         System.out.println("-------------------------");
         System.out.println("Saldo após operações: ");
@@ -49,17 +49,17 @@ public class CriarConta {
 
         contaLuiz.transfere(100, contaJoao);
 
-        System.out.println(contaJoao.titular.nome);
-        System.out.println("Saldo: " + contaJoao.pegaSaldo());
-        System.out.println("Profissão: " + contaJoao.titular.profissao);
+        System.out.println(contaJoao.getTitular().nome);
+        System.out.println("Saldo: " + contaJoao.getSaldo());
+        System.out.println("Profissão: " + contaJoao.getTitular().profissao);
 
-        System.out.println(contaLucas.titular.nome);
-        System.out.println("Saldo: " + contaLucas.pegaSaldo());
-        System.out.println("Profissão: " + contaLucas.titular.profissao);
+        System.out.println(contaLucas.getTitular().nome);
+        System.out.println("Saldo: " + contaLucas.getSaldo());
+        System.out.println("Profissão: " + contaLucas.getTitular().profissao);
 
-        System.out.println(contaLuiz.titular.nome);
-        System.out.println("Saldo: " + contaLuiz.pegaSaldo());
-        System.out.println("Profissão: " + contaLuiz.titular.profissao);
+        System.out.println(contaLuiz.getTitular().nome);
+        System.out.println("Saldo: " + contaLuiz.getSaldo());
+        System.out.println("Profissão: " + contaLuiz.getTitular().profissao);
 
     }
 }
