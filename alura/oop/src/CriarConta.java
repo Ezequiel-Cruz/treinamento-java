@@ -13,9 +13,10 @@ public class CriarConta {
 
         segundaConta.saldo = 550;
         segundaConta.deposita(100);
+
         System.out.println("Segunda conta: " + segundaConta.saldo);
 
-        System.out.println("Agencia: " + primeiraConta.agencia );
-        System.out.println("Agencia: " + segundaConta.agencia );
+        primeiraConta.saca(50);
+        System.out.println("Saldo da conta apos saque: " + primeiraConta.saldo);
     }
 }
