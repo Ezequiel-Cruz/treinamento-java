@@ -41,10 +41,12 @@ class Conta{
     }
 
     public void depositar(Double valor) {
+
         this.adicionarTransacao(valor);
     }
 
     public Double sacar(Double valor) {
+
         return this.adicionarTransacao(-valor);
     }
 
@@ -54,14 +56,17 @@ class Conta{
     }
 
     public Double obterSaldo() {
+
         return Transacao.obterSaldo(this.transacoes);
     }
 
     public void verSaldo() {
+
         System.out.println("Valor em conta: " + this.obterSaldo());
     }
 
     Conta() {
+
         this.transacoes = new ArrayList<>();
     }
 

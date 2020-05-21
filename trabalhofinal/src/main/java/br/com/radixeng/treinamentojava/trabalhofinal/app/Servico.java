@@ -85,11 +85,33 @@ public class Servico {
         IUsuario usuarioAlvo = new IUsuario() {
             @Override
             public String obterIdentificador() {
+
                 return usuario;
             }
         };
 
         Servico.banco.sacar(operacaoSaque.valor, usuarioAlvo,TipoDeConta.valueOf(operacaoSaque.tipoConta));
+
+        return "";
+    }
+
+    @POST
+    @Path("conta/{id_usuario}/transferir/{id_usuario_destino}")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String transferir(@PathParam("id_usuario") String usuario, Operacao operacaoSaque) {
+        IUsuario usuarioAlvo = new IUsuario() {
+            @Override
+            public String obterIdentificador() {
+
+                return usuario;
+            }
+        };
+
+        Servico.banco.transferir(operacaoSaque.valor,
+                usuarioAlvo,
+                TipoDeConta.valueOf(operacaoSaque.tipoConta),
+                usuarioAlvo,
+                TipoDeConta.valueOf(operacaoSaque.tipoConta));
 
         return "";
     }
@@ -106,6 +128,7 @@ public class Servico {
         IUsuario usuarioAlvo = new IUsuario() {
             @Override
             public String obterIdentificador() {
+
                 return usuario;
             }
         };
@@ -121,5 +144,13 @@ public class Servico {
         }
 
         return resposta;
+    }
+
+    @GET
+    @Path("visaoGerencial")
+    @Produces(MediaType.APPLICATION_JSON)
+    public String obtervisaoGerencial() {
+
+        return Servico.banco.verTodosOsSaldos().toString();
     }
 }
