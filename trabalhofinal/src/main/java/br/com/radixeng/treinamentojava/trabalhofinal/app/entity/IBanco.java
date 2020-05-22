@@ -1,4 +1,4 @@
-package br.com.radixeng.treinamentojava.trabalhofinal.app;
+package br.com.radixeng.treinamentojava.trabalhofinal.app.entity;
 
 import java.util.*;
 
@@ -11,7 +11,7 @@ public interface IBanco {
 
     public void transferir(Double valor, IUsuario origem, TipoDeConta tipoOrigem, IUsuario destino, TipoDeConta tipoDestino);
 
-    String verTodosOsSaldos();
+    Map<String, Map<TipoDeConta, Conta>> visaoGerencial();
 
     Map<TipoDeConta, Conta> obterContasUsuario(IUsuario usuario);
 }

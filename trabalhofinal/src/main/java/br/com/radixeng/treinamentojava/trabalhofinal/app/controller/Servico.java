@@ -1,27 +1,15 @@
-package br.com.radixeng.treinamentojava.trabalhofinal.app;
+package br.com.radixeng.treinamentojava.trabalhofinal.app.controller;
+
+import br.com.radixeng.treinamentojava.trabalhofinal.app.controller.model.*;
+import br.com.radixeng.treinamentojava.trabalhofinal.app.entity.TipoDeConta;
+import br.com.radixeng.treinamentojava.trabalhofinal.app.entity.Banco;
+import br.com.radixeng.treinamentojava.trabalhofinal.app.entity.Conta;
+import br.com.radixeng.treinamentojava.trabalhofinal.app.entity.IBanco;
+import br.com.radixeng.treinamentojava.trabalhofinal.app.entity.IUsuario;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import java.util.*;
-
-class NovaConta {
-    public String usuario;
-    public String tipoConta;
-}
-
-class Operacao {
-    public Double valor;
-    public String tipoConta;
-}
-
-class RespostaConta {
-    public TipoDeConta tipo;
-    public Double saldo;
-}
-
-class RespostaListaContas {
-    public List<RespostaConta> contas = new ArrayList<>();
-}
 
 @Path("/banco")
 public class Servico {
@@ -44,7 +32,6 @@ public class Servico {
                 return novaConta.usuario;
             }
         };
-
         Boolean contaFoiCriada = Servico.banco.criarConta(usuario, TipoDeConta.valueOf(novaConta.tipoConta));
 
         if (contaFoiCriada) {
@@ -65,6 +52,7 @@ public class Servico {
         IUsuario usuarioAlvo = new IUsuario() {
             @Override
             public String obterIdentificador() {
+
                 return usuario;
             }
         };
@@ -149,8 +137,8 @@ public class Servico {
     @GET
     @Path("visaoGerencial")
     @Produces(MediaType.APPLICATION_JSON)
-    public String obtervisaoGerencial() {
+    public Map<String, Map<TipoDeConta,Conta>> obterVisaoGerencial() {
 
-        return Servico.banco.verTodosOsSaldos().toString();
+        return Servico.banco.visaoGerencial();
     }
 }

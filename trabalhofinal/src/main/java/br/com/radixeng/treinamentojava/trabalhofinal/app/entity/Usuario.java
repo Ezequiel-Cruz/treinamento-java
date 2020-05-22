@@ -1,18 +1,23 @@
-package br.com.radixeng.treinamentojava.trabalhofinal.app;
+package br.com.radixeng.treinamentojava.trabalhofinal.app.entity;
 
-class Usuario implements IUsuario{
+import br.com.radixeng.treinamentojava.trabalhofinal.app.entity.IUsuario;
+
+public class Usuario implements IUsuario {
     private String nome;
 
     Usuario(String nome) {
+
         this.nome = nome;
     }
 
     public String obterNome() {
+
         return this.nome;
     }
 
     @Override
     public String obterIdentificador() {
+
         return this.obterNome();
     }
 }
