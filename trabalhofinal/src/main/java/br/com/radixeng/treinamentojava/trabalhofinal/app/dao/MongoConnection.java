@@ -1,39 +1,34 @@
+
 package br.com.radixeng.treinamentojava.trabalhofinal.app.dao;
 
-import com.mongodb.*;
-import java.net.UnknownHostException;
+import org.bson.Document;
+import com.mongodb.client.MongoClients;
+import com.mongodb.client.MongoClient;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
 
 public class MongoConnection {
-    private static final String HOST = "localhost";
-    private static final int PORT = 27017;
-    private static final String DB_NAME = "treinamento";
 
-    private static MongoConnection uniqInstance;
-    private static int mongoInstance = 1;
+    public MongoConnection() {
+        try {
+            MongoClient cliente = MongoClients.create(
+                    "mongodb+srv://admin:admin@cluster0-9rzbh.mongodb.net/treinamento?retryWrites=true&w=majority");
+            MongoDatabase database = cliente.getDatabase("treinamento");
 
-    private Mongo mongo;
-    private DB db;
+            MongoCollection<Document> alunos = database.getCollection("contas");
+            Document aluno = alunos.find().first();
 
-    private MongoConnection() {
-    }
+            System.out.println(aluno.get("nome").toString());
+            cliente.close();
 
-    public static synchronized MongoConnection getInstance() {
-        if (uniqInstance == null) {
-            uniqInstance = new MongoConnection();
+        }  catch (Exception e) {
+            e.printStackTrace();
         }
-        return uniqInstance;
     }
 
-    public DB getDB() {
-        if (mongo == null) {
-            try {
-                mongo = new Mongo(HOST, PORT);
-                db = mongo.getDB(DB_NAME);
-                System.out.println("Mongo instance equals :> " + mongoInstance++);
-            } catch (UnknownHostException e) {
-                e.printStackTrace();
-            }
-        }
-        return db;
-    }
+    // public boolean inserir() {
+       // document.put("id", "ezequiel");
+     //   colecao.createIndex(document);
+     //   return true;
+   // }
 }

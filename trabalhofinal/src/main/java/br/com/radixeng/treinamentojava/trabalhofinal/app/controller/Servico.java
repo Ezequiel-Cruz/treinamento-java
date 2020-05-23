@@ -1,11 +1,7 @@
 package br.com.radixeng.treinamentojava.trabalhofinal.app.controller;
 
 import br.com.radixeng.treinamentojava.trabalhofinal.app.controller.model.*;
-import br.com.radixeng.treinamentojava.trabalhofinal.app.entity.TipoDeConta;
-import br.com.radixeng.treinamentojava.trabalhofinal.app.entity.Banco;
-import br.com.radixeng.treinamentojava.trabalhofinal.app.entity.Conta;
-import br.com.radixeng.treinamentojava.trabalhofinal.app.entity.IBanco;
-import br.com.radixeng.treinamentojava.trabalhofinal.app.entity.IUsuario;
+import br.com.radixeng.treinamentojava.trabalhofinal.app.entity.*;
 
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
@@ -130,7 +126,6 @@ public class Servico {
             c.tipo = tipo;
             resposta.contas.add(c);
         }
-
         return resposta;
     }
 

@@ -1,7 +1,5 @@
 package br.com.radixeng.treinamentojava.trabalhofinal.app.entity;
 
-import br.com.radixeng.treinamentojava.trabalhofinal.app.entity.IUsuario;
-
 public class Usuario implements IUsuario {
     private String nome;
 

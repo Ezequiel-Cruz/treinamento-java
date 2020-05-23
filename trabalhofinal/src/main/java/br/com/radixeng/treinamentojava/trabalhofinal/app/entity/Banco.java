@@ -1,11 +1,12 @@
 package br.com.radixeng.treinamentojava.trabalhofinal.app.entity;
 
-import br.com.radixeng.treinamentojava.trabalhofinal.app.exception.TipoDeContaInvalida;
 import br.com.radixeng.treinamentojava.trabalhofinal.app.dao.EntityDao;
+import br.com.radixeng.treinamentojava.trabalhofinal.app.exception.TipoDeContaInvalida;
 
 import java.util.*;
 
-public class Banco extends EntityDao implements IBanco {
+public class Banco  extends EntityDao implements IBanco {
+    // MongoConnection conexao = new MongoConnection();
 
     public Map<String, Map<TipoDeConta,Conta>> mapaUsuarioContas;
 
@@ -22,7 +23,7 @@ public class Banco extends EntityDao implements IBanco {
     }
 
     private Banco(){
-        super(Banco.class);
+
         this.mapaUsuarioContas = new HashMap();
     }
 
@@ -40,7 +41,8 @@ public class Banco extends EntityDao implements IBanco {
                 this.mapaUsuarioContas.put(usuario.obterIdentificador(), contas);
             }
 
-            save(this.mapaUsuarioContas);
+           // conexao.inserir();
+            // save(this.mapaUsuarioContas);
 
             return true;
         } catch (TipoDeContaInvalida e) {

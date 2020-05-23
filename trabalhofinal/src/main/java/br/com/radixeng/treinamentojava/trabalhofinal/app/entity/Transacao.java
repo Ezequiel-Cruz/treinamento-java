@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Transacao {
     private Double valor;
+
     private Date data;
 
     public Double obterValor() {
