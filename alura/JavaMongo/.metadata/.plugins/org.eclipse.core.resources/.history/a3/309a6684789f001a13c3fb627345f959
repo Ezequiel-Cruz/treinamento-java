@@ -1,0 +1,30 @@
+package trabalhofinal.controller.model;
+
+import java.util.List;
+import java.util.Map;
+
+import trabalhofinal.entity.Conta;
+import trabalhofinal.entity.TipoDeConta;
+
+public class NovaConta_ {
+
+	private String usuario;
+	
+	public String getUsuario() {
+		return usuario;
+	}
+
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+
+	public List<Operacao> getContas() {
+		return contas;
+	}
+
+	public void setContas(Map<TipoDeConta, Conta> contas2) {
+		this.contas = (List<Operacao>) contas2;
+	}
+
+	private List<Operacao> contas;
+}

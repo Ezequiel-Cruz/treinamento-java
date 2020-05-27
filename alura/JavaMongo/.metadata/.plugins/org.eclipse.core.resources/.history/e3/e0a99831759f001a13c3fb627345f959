@@ -1,0 +1,10 @@
+package trabalhofinal.converter;
+
+import org.bson.codecs.CollectibleCodec;
+
+import trabalhofinal.controller.model.NovaConta_;
+
+public class ContaConverter implements CollectibleCodec<NovaConta_>  {
+
+	private Codec<Document> Codec;
+}

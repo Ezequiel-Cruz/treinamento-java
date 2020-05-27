@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<qualifiedTypeNameHistroy>
+<fullyQualifiedTypeName name="org.glassfish.jersey.jetty.JettyHttpContainerFactory"/>
+<fullyQualifiedTypeName name="com.mongodb.connection.Server"/>
+<fullyQualifiedTypeName name="java.net.URI"/>
+<fullyQualifiedTypeName name="javax.ws.rs.core.UriBuilder"/>
+<fullyQualifiedTypeName name="org.glassfish.jersey.server.ResourceConfig"/>
+<fullyQualifiedTypeName name="trabalhofinal.controller.Servico"/>
+<fullyQualifiedTypeName name="trabalhofinal.dao.MongoConnection"/>
+<fullyQualifiedTypeName name="trabalhofinal.exception.TipoDeContaInvalida"/>
+<fullyQualifiedTypeName name="trabalhofinal.entity.IBanco"/>
+<fullyQualifiedTypeName name="trabalhofinal.entity.Banco"/>
+<fullyQualifiedTypeName name="trabalhofinal.controller.model.NovaConta"/>
+<fullyQualifiedTypeName name="trabalhofinal.entity.IUsuario"/>
+<fullyQualifiedTypeName name="trabalhofinal.controller.model.Operacao"/>
+<fullyQualifiedTypeName name="trabalhofinal.entity.TipoDeConta"/>
+<fullyQualifiedTypeName name="trabalhofinal.entity.Conta"/>
+<fullyQualifiedTypeName name="trabalhofinal.controller.model.RespostaListaContas"/>
+<fullyQualifiedTypeName name="org.eclipse.persistence.internal.oxm.record.json.JSONParser.value_return"/>
+<fullyQualifiedTypeName name="com.sun.xml.fastinfoset.util.ValueArray"/>
+<fullyQualifiedTypeName name="org.glassfish.jersey.internal.util.collection.Values"/>
+<fullyQualifiedTypeName name="javax.ws.rs.DefaultValue"/>
+<fullyQualifiedTypeName name="org.eclipse.persistence.internal.libraries.asm.tree.analysis.Value"/>
+<fullyQualifiedTypeName name="java.lang.String"/>
+<fullyQualifiedTypeName name="java.util.List"/>
+<fullyQualifiedTypeName name="trabalhofinal.controller.model.NovaConta_"/>
+<fullyQualifiedTypeName name="org.bson.codecs.CollectibleCodec"/>
+<fullyQualifiedTypeName name="org.bson.codecs.Codec"/>
+<fullyQualifiedTypeName name="trabalhofinal.codecs.ContaCodec"/>
+<fullyQualifiedTypeName name="org.bson.codecs.configuration.CodecRegistry"/>
+<fullyQualifiedTypeName name="com.mongodb.MongoClientOptions"/>
+<fullyQualifiedTypeName name="org.bson.codecs.configuration.CodecRegistries"/>
+<fullyQualifiedTypeName name="java.util.ArrayList"/>
+<fullyQualifiedTypeName name="trabalhofinal.controller.model.RespostaConta"/>
+</qualifiedTypeNameHistroy>

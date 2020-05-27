@@ -1,0 +1,12 @@
+package trabalhofinal.codecs;
+
+import org.bson.codecs.CollectibleCodec;
+import org.bson.Document;
+import org.bson.codecs.Codec;
+
+import trabalhofinal.controller.model.NovaConta_;
+
+public class ContaCodec implements CollectibleCodec<NovaConta_>  {
+
+	private Codec<Document> codec;
+}

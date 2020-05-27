@@ -1,0 +1,106 @@
+package trabalhofinal.dao;
+
+import com.mongodb.MongoClient;
+import com.mongodb.MongoClientOptions;
+import com.mongodb.MongoCredential;
+import com.mongodb.ServerAddress;
+import com.mongodb.client.MongoCollection;
+import com.mongodb.client.MongoDatabase;
+
+import trabalhofinal.codecs.ContaCodec;
+import trabalhofinal.controller.model.NovaConta_;
+import trabalhofinal.controller.model.RespostaConta;
+import trabalhofinal.controller.model.RespostaListaContas;
+import trabalhofinal.entity.Conta;
+import trabalhofinal.entity.TipoDeConta;
+
+import org.bson.Document;
+import org.bson.codecs.Codec;
+import org.bson.codecs.configuration.CodecRegistries;
+import org.bson.codecs.configuration.CodecRegistry;
+import org.eclipse.persistence.internal.libraries.asm.tree.analysis.Value;
+
+import java.util.Arrays;
+import java.util.Map;
+
+import javax.ws.rs.DefaultValue;
+
+public class MongoConnection {
+
+	private MongoClient cliente;
+	private MongoDatabase bancaDeDados;
+
+    public void OpenConnection() {
+        try {
+//        	Codec<Document> codec = MongoClient.getDefaultCodecRegistry().get(Document.class);
+//    		
+//    		ContaCodec contaCodec = new ContaCodec(codec);
+//    		
+//    		CodecRegistry registro = CodecRegistries.fromRegistries(MongoClient.getDefaultCodecRegistry(),
+//    				CodecRegistries.fromCodecs(contaCodec));
+//    		
+//    		MongoClientOptions opcoes = MongoClientOptions.builder().codecRegistry(registro).build();
+//    		
+//    		this.cliente = new MongoClient("localhost:27017", opcoes);
+//    		this.bancaDeDados = cliente.getDatabase("test");
+
+        }  catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
+
+    public boolean inserir(String usuario, Map<TipoDeConta,Conta> contas) {
+        try {
+
+            MongoCredential credential = MongoCredential.createCredential("java", "treinamento", "java@".toCharArray());
+            MongoClient cliente = new MongoClient(new ServerAddress("localhost", 27017), Arrays.asList(credential));
+
+            MongoDatabase database = cliente.getDatabase("treinamento");
+
+            System.out.println("Sucesso na conexão: " + cliente);
+
+            System.out.println("Sucesso na base de dados: " + database);
+
+            MongoCollection<Document> contas1 = database.getCollection("contas");
+
+            System.out.println("Sucesso na colection: " + contas1);
+
+            MongoCollection document = database.getCollection("contas");
+
+            RespostaListaContas resultadoConta = new RespostaListaContas();
+
+            Map<TipoDeConta, Conta> conta = contas;
+            for (TipoDeConta tipo: conta.keySet()) {
+                RespostaConta c = new RespostaConta();
+                c.saldo = contas.get(tipo).obterSaldo();
+                c.tipo = tipo;
+                resultadoConta.contas.add(c);
+            }
+
+            NovaConta_ teste = new NovaConta_();
+//            NovaContaMongo teste = new NovaContaMongo();
+//
+//            teste.usuario = usuario;
+//            teste.contas = resultadoConta.contas;
+
+            teste.setUsuario(usuario);
+//            Document doc = new Document("nome", usuario.toString())
+//                    .append("contas",
+//                            Arrays.asList(
+//               new Document()
+//                       .append("tipo", conta.getOrDefault("tipo", Value))
+//                       .append("valor", teste.contas.get().saldo)
+//                ));
+
+            document.insertOne(doc);
+            System.out.println(doc);
+            cliente.close();
+            return true;
+
+        } catch (Exception e) {
+            System.out.println("Erro no insert: " + e);
+            return false;
+        }
+    }
+}

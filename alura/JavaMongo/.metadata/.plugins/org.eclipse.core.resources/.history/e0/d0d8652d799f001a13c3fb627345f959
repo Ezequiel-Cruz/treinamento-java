@@ -1,0 +1,32 @@
+package trabalhofinal.controller.model;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class NovaConta_ {
+
+	private String usuario;
+	private List<RespostaConta> contas;
+	
+	public String getUsuario() {
+		return usuario;
+	}
+	public void setUsuario(String usuario) {
+		this.usuario = usuario;
+	}
+	public List<RespostaConta> getContas() {
+		if (contas == null) {
+			contas = new ArrayList<RespostaConta>();
+		}
+		return contas;
+		
+		// return contas;
+	}
+	public void setContas(List<RespostaConta> contas) {
+		this.contas = contas;
+	}
+	
+
+
+	
+}

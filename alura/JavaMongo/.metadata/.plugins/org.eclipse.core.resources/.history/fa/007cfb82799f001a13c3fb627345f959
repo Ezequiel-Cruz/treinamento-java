@@ -1,0 +1,66 @@
+package trabalhofinal.codecs;
+
+import java.util.List;
+
+import org.bson.codecs.CollectibleCodec;
+import org.bson.codecs.DecoderContext;
+import org.bson.codecs.EncoderContext;
+import org.bson.BsonReader;
+import org.bson.BsonValue;
+import org.bson.BsonWriter;
+import org.bson.Document;
+import org.bson.codecs.Codec;
+
+import trabalhofinal.controller.model.NovaConta_;
+import trabalhofinal.controller.model.RespostaConta;
+
+public class ContaCodec implements CollectibleCodec<NovaConta_>  {
+
+	private Codec<Document> codec;
+
+	public ContaCodec(Codec<Document> codec2) {
+		// TODO Auto-generated constructor stub
+	}
+
+	@Override
+	public void encode(BsonWriter writer, NovaConta_ novaConta, EncoderContext encoderContext) {
+		
+		String nome = novaConta.getUsuario();
+		List<RespostaConta> novaContas = novaConta.getContas();
+		
+		Document document = new Document();
+		
+	}
+
+	@Override
+	public Class<NovaConta_> getEncoderClass() {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public NovaConta_ decode(BsonReader reader, DecoderContext decoderContext) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public NovaConta_ generateIdIfAbsentFromDocument(NovaConta_ document) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+
+	@Override
+	public boolean documentHasId(NovaConta_ document) {
+		// TODO Auto-generated method stub
+		return false;
+	}
+
+	@Override
+	public BsonValue getDocumentId(NovaConta_ document) {
+		// TODO Auto-generated method stub
+		return null;
+	}
+	
+	
+}

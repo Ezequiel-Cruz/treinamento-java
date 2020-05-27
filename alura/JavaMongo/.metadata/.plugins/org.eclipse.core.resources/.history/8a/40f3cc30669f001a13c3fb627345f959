@@ -1,0 +1,5 @@
+package trabalhofinal.dao;
+
+public class MongoConnection {
+
+}

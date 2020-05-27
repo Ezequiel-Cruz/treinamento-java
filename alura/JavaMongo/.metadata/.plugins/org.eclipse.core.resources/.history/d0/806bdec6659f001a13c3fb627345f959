@@ -1,0 +1,5 @@
+package trabalhofinal.exception;
+
+public class TipoDeContaInvalida {
+
+}

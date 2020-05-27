@@ -1,0 +1,8 @@
+package trabalhofinal.controller;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class RespostaListaContas {
+    public List<RespostaConta> contas = new ArrayList<>();
+}

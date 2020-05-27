@@ -1,0 +1,13 @@
+package trabalhofinal.controller.model;
+
+import java.util.List;
+
+public class NovaConta_ {
+
+	private String usuario;
+	private List<RespostaConta> contas;
+	
+
+
+	
+}
