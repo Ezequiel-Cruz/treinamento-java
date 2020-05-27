@@ -5,7 +5,6 @@
   <version>0.0.1-SNAPSHOT</version>
   
   <dependencies>
-	 <!-- MongoDB -->
     <dependency>
       <groupId>org.mongodb</groupId>
       <artifactId>mongodb-driver</artifactId>
