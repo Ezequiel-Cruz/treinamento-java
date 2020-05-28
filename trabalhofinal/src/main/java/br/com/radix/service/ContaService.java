@@ -1,9 +1,6 @@
 package br.com.radix.service;
 
-import br.com.radix.entity.Cliente;
-import br.com.radix.entity.Conta;
-import br.com.radix.entity.Operacao;
-import br.com.radix.entity.Transacao;
+import br.com.radix.entity.*;
 import br.com.radix.repository.ContaRepository;
 import br.com.radix.repository.TransacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -97,6 +94,50 @@ public class ContaService {
         Conta contaAtualizada = listContas.get(0);
 
         return this.contaRepository.save(contaAtualizada);
+    }
+
+    public Conta transfere (String usuarioOrigem, String usuarioDestino, OperacaoTransferencia operacao) {
+        Cliente clienteOrigem =  this.clienteService.getByNome(usuarioOrigem);
+        Cliente clienteDestino =  this.clienteService.getByNome(usuarioDestino);
+
+        if (clienteOrigem == null) {
+            return null;
+        }
+
+        if (usuarioDestino == null) {
+            return null;
+        }
+
+        List<Conta> listContasOrigem = new ArrayList<>();
+
+        for (Conta contas: clienteOrigem.getContas()) {
+            String tipoDaConta = contas.getTipoConta();
+
+            if (operacao.tipoContaOrigem.equals(tipoDaConta)) {
+
+                contas.setSaldo(this.saca(contas.getSaldo(), operacao.valor));
+                listContasOrigem.add(contas);
+            }
+        }
+        Conta contaAtualizadaOrigem = listContasOrigem.get(0);
+
+        this.contaRepository.save(contaAtualizadaOrigem);
+
+        // Destino
+        List<Conta> listContasDestino = new ArrayList<>();
+
+        for (Conta contas: clienteDestino.getContas()) {
+            String tipoDaConta = contas.getTipoConta();
+
+            if (operacao.tipoContaDestino.equals(tipoDaConta)) {
+
+                contas.setSaldo(this.deposito(contas.getSaldo(), operacao.valor));
+                listContasDestino.add(contas);
+            }
+        }
+        Conta contaAtualizadaDestino = listContasDestino.get(0);
+
+        return this.contaRepository.save(contaAtualizadaDestino);
     }
 
     private BigDecimal deposito(BigDecimal valorAtual, BigDecimal valorDaOperacao) {
