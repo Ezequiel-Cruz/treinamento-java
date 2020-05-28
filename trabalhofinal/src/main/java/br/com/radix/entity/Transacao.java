@@ -1,8 +1,11 @@
 package br.com.radix.entity;
 
+import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import java.math.BigDecimal;
 import java.util.Date;
 import java.util.List;
@@ -11,9 +14,21 @@ import java.util.List;
 public class Transacao {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private String id;
     private BigDecimal valor;
+    @CreatedDate
     private Date data;
+
+    public Transacao() {
+        super();
+    }
+
+    public Transacao(String id, BigDecimal valor, Date data) {
+        this.id = id;
+        this.valor = valor;
+        this.data = data;
+    }
 
     public String getId() {
         return id;

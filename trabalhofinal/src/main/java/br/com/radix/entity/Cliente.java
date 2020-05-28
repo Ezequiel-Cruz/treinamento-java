@@ -1,7 +1,6 @@
 package br.com.radix.entity;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.util.ArrayList;
@@ -14,8 +13,18 @@ public class Cliente {
     private String nome;
     private int idade;
     private String email;
-    @DBRef
-    private List<Conta> contas = new ArrayList<>();
+    private List<Conta> contas  = new ArrayList<>();
+
+    public Cliente(){
+        super();
+    }
+
+    public Cliente(String nome, int idade, String email, List<Conta> contas) {
+        this.nome = nome;
+        this.idade = idade;
+        this.email = email;
+        this.contas = contas;
+    }
 
     public String getNome() {
         return nome;
@@ -48,7 +57,5 @@ public class Cliente {
     public void setContas(List<Conta> contas) {
         this.contas = contas;
     }
-
-
 
 }
