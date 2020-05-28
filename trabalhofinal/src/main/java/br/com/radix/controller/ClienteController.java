@@ -3,6 +3,8 @@ package br.com.radix.controller;
 import br.com.radix.entity.Cliente;
 import br.com.radix.entity.Operacao;
 import br.com.radix.service.ClienteService;
+import br.com.radix.service.ContaService;
+import br.com.radix.service.TransacaoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -13,6 +15,8 @@ public class ClienteController {
 
     @Autowired
     ClienteService clienteService;
+    ContaService contaService;
+    TransacaoService transacaoService;
 
     @RequestMapping(value = "/cliente", method = RequestMethod.GET)
     public List<Cliente> listar() {
@@ -32,7 +36,7 @@ public class ClienteController {
         return this.clienteService.salvarCliente(cliente);
     }
 
-    @RequestMapping(value = "/cliente", method = RequestMethod.PUT)
+    @RequestMapping(value = "/cliente", method = RequestMethod.PATCH)
     public Cliente editar(@RequestBody Cliente cliente) {
 
         return this.clienteService.salvarCliente(cliente);

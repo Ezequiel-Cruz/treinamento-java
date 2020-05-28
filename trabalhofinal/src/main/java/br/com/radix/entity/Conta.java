@@ -1,24 +1,21 @@
 package br.com.radix.entity;
 
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.Collection;
 import java.util.List;
 
+@Document
 public class Conta {
-
-    private String agencia;
     @Id
     private String numero;
+    private String agencia;
     private String tipoConta;
     private BigDecimal saldo;
-    private List<Transacao> transacoes = new ArrayList<>();
+    @DBRef
+    private List<Transacao> transacoes;
 
     public Conta(){
         super();
@@ -71,6 +68,5 @@ public class Conta {
     public void setTransacoes(List<Transacao> transacoes) {
         this.transacoes = transacoes;
     }
-
 
 }

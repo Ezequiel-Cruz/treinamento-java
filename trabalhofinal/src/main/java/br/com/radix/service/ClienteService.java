@@ -16,29 +16,42 @@ public class ClienteService {
 
     @Autowired
     ClienteRepository clienteRepository;
+    @Autowired
+    ContaService contaService;
 
     public List<Cliente> listaCliente() {
-        return clienteRepository.findAll();
+        return this.clienteRepository.findAll();
     }
 
     public Cliente salvarCliente(Cliente clienteAdd) {
 
-        return clienteRepository.save(clienteAdd);
+        List<Conta> contaList = new ArrayList<>();
+        for (Conta contas: clienteAdd.getContas()) {
 
+            if (contas != null) {
+                Conta conta = this.contaService.salvarConta(contas);
+
+                contaList.add(conta);
+            }
+        }
+        clienteAdd.setContas(null);
+        clienteAdd.setContas(contaList);
+
+        return this.clienteRepository.save(clienteAdd);
     }
 
     public void deleteCliente(String id) {
-        clienteRepository.delete(id);
+        this.clienteRepository.delete(id);
     }
 
     public Cliente getById(String id) {
 
-        return clienteRepository.findOne(id);
+        return this.clienteRepository.findOne(id);
     }
 
     public Cliente getByNome(String nome) {
 
-        return clienteRepository.findOne(nome);
+        return this.clienteRepository.findOne(nome);
     }
 
 

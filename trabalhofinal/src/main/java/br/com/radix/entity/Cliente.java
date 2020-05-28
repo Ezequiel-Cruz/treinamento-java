@@ -1,9 +1,9 @@
 package br.com.radix.entity;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Document
@@ -13,7 +13,8 @@ public class Cliente {
     private String nome;
     private int idade;
     private String email;
-    private List<Conta> contas  = new ArrayList<>();
+    @DBRef
+    private List<Conta> contas;
 
     public Cliente(){
         super();
