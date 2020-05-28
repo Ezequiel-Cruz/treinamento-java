@@ -13,22 +13,13 @@ import java.util.List;
 @Document
 public class Conta {
 
-    @Id
-    private String id;
     private String agencia;
+    @Id
     private String numero;
     private String tipoConta;
     private BigDecimal saldo;
     @DBRef
     private List<Transacao> transacoes = new ArrayList<>();;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getAgencia() {
         return agencia;

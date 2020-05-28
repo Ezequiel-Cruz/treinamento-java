@@ -23,8 +23,7 @@ public class ClienteController {
     @RequestMapping(value = "/cliente/{nome}", method = RequestMethod.GET)
     public Cliente getById(@PathVariable String nome) {
 
-
-        return this.clienteService.getByNome(nome);
+        return this.clienteService.getById(nome);
     }
 
     @RequestMapping(value = "/cliente", method = RequestMethod.POST)
