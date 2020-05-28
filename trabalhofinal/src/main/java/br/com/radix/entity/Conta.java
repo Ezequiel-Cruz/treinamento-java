@@ -8,45 +8,26 @@ import org.springframework.data.mongodb.core.mapping.Document;
 import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.List;
 
 @Document
 public class Conta {
 
     @Id
-    private ObjectId _id;
+    private String id;
     private String agencia;
     private String numero;
     private String tipoConta;
     private BigDecimal saldo;
     @DBRef
-    protected Collection<Transacao> transacoes = new ArrayList<Transacao>();
+    private List<Transacao> transacoes = new ArrayList<>();;
 
-    public Conta() {
-        this._id = ObjectId.get();
+    public String getId() {
+        return id;
     }
 
-    public ObjectId get_id() {
-        return _id;
-    }
-
-    public void set_id(ObjectId _id) {
-        this._id = _id;
-    }
-
-    public Collection<Transacao> getTransacoes() {
-        return transacoes;
-    }
-
-    public void setTransacoes(Collection<Transacao> transacoes) {
-        this.transacoes = transacoes;
-    }
-
-    public String getNumero() {
-        return numero;
-    }
-
-    public void setNumero(String numero) {
-        this.numero = numero;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public String getAgencia() {
@@ -55,6 +36,14 @@ public class Conta {
 
     public void setAgencia(String agencia) {
         this.agencia = agencia;
+    }
+
+    public String getNumero() {
+        return numero;
+    }
+
+    public void setNumero(String numero) {
+        this.numero = numero;
     }
 
     public String getTipoConta() {
@@ -72,4 +61,14 @@ public class Conta {
     public void setSaldo(BigDecimal saldo) {
         this.saldo = saldo;
     }
+
+    public List<Transacao> getTransacoes() {
+        return transacoes;
+    }
+
+    public void setTransacoes(List<Transacao> transacoes) {
+        this.transacoes = transacoes;
+    }
+
+
 }

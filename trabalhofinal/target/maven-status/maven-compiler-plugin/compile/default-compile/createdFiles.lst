@@ -1,9 +1,9 @@
 br\com\radix\controller\ClienteController.class
+br\com\radix\entity\Operacao.class
+br\com\radix\entity\Transacao.class
+br\com\radix\entity\TipoConta.class
 br\com\radix\service\ClienteService.class
-br\com\radix\controller\ContaController.class
+br\com\radix\entity\Cliente.class
 br\com\radix\App.class
 br\com\radix\repository\ClienteRepository.class
-br\com\radix\repository\ContaRepository.class
 br\com\radix\entity\Conta.class
-br\com\radix\service\ContaService.class
-br\com\radix\entity\Cliente.class

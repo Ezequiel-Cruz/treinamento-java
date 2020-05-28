@@ -1,9 +1,7 @@
 package br.com.radix.entity;
 
-import org.bson.types.ObjectId;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-import org.springframework.format.annotation.DateTimeFormat;
 
 import java.math.BigDecimal;
 import java.util.Date;
@@ -13,21 +11,16 @@ import java.util.List;
 public class Transacao {
 
     @Id
-    private ObjectId _id;
+    private String id;
     private BigDecimal valor;
-    @DateTimeFormat
     private Date data;
 
-    public Transacao(ObjectId _id) {
-        this._id = ObjectId.get();
+    public String getId() {
+        return id;
     }
 
-    public ObjectId get_id() {
-        return _id;
-    }
-
-    public void set_id(ObjectId _id) {
-        this._id = _id;
+    public void setId(String id) {
+        this.id = id;
     }
 
     public BigDecimal getValor() {
@@ -45,7 +38,6 @@ public class Transacao {
     public void setData(Date data) {
         this.data = data;
     }
-
 
     public BigDecimal obterValor() {
         return this.valor;

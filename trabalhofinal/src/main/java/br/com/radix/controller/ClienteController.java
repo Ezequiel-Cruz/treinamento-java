@@ -20,11 +20,11 @@ public class ClienteController {
         return this.clienteService.listaCliente();
     }
 
-    @RequestMapping(value = "/cliente/{id}", method = RequestMethod.GET)
-    public Cliente getById(@PathVariable String id) {
+    @RequestMapping(value = "/cliente/{nome}", method = RequestMethod.GET)
+    public Cliente getById(@PathVariable String nome) {
 
 
-        return this.clienteService.getById(id);
+        return this.clienteService.getByNome(nome);
     }
 
     @RequestMapping(value = "/cliente", method = RequestMethod.POST)
