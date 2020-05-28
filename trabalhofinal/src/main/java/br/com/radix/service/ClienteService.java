@@ -55,36 +55,4 @@ public class ClienteService {
     }
 
 
-    public Cliente depositaSaldo(String usuario, Operacao operacao) {
-
-        Cliente cliente = this.getByNome(usuario);
-
-        if (cliente == null) {
-            return null;
-        }
-
-        List<Conta> listContas = new ArrayList<>();
-
-        for (Conta contas: cliente.getContas()) {
-            String tipoDaConta = contas.getTipoConta();
-
-            if (operacao.tipoConta.equals(tipoDaConta)) {
-                contas.setSaldo(this.deposito(contas.getSaldo(), operacao.valor));
-            }
-            listContas.add(contas);
-        }
-        cliente.setContas(null);
-        cliente.setContas(listContas);
-
-        return this.salvarCliente(cliente);
-    }
-
-    private BigDecimal deposito(BigDecimal valor, BigDecimal valor2) {
-
-        BigDecimal saldo = valor;
-        BigDecimal saldo2 = valor2;
-        BigDecimal result = saldo.add(saldo2);
-
-        return result;
-    }
 }

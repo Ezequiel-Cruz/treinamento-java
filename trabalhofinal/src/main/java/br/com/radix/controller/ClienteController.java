@@ -15,8 +15,6 @@ public class ClienteController {
 
     @Autowired
     ClienteService clienteService;
-    ContaService contaService;
-    TransacaoService transacaoService;
 
     @RequestMapping(value = "/cliente", method = RequestMethod.GET)
     public List<Cliente> listar() {
@@ -46,11 +44,5 @@ public class ClienteController {
     public void deletar(@PathVariable String id) {
 
         this.clienteService.deleteCliente(id);
-    }
-
-    @RequestMapping(value = "/cliente/{id}/deposita", method = RequestMethod.POST)
-    public Cliente salvar(@PathVariable("id") String usuario, @RequestBody Operacao operacao) {
-
-        return this.clienteService.depositaSaldo(usuario, operacao);
     }
 }
