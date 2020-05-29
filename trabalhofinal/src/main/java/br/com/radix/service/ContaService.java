@@ -2,7 +2,6 @@ package br.com.radix.service;
 
 import br.com.radix.entity.*;
 import br.com.radix.repository.ContaRepository;
-import br.com.radix.repository.TransacaoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -27,18 +26,7 @@ public class ContaService {
 
     public Conta salvarConta(Conta contaAdd) {
 
-        List<Transacao> transacaoList = new ArrayList<>();
-        for (Transacao transacaos: contaAdd.getTransacoes()) {
-
-            if (transacaos !=null) {
-               Transacao transacao = this.transacaoService.salvarTransacao(transacaos);
-
-                transacaoList.add(transacao);
-            }
-        }
-        contaAdd.setTransacoes(null);
-        contaAdd.setTransacoes(transacaoList);
-        return this.contaRepository.save(contaAdd);
+        return this.contaRepository.save(gerarTransacao(contaAdd, BigDecimal.ZERO));
     }
 
     public void deleteConta(String id) {
@@ -64,7 +52,8 @@ public class ContaService {
             if (operacao.tipoConta.equals(tipoDaConta)) {
 
                 contas.setSaldo(this.saca(contas.getSaldo(), operacao.valor));
-                listContas.add(contas);
+
+                listContas.add(this.gerarTransacao(contas, operacao.valor));
             }
         }
         Conta contaAtualizada = listContas.get(0);
@@ -88,7 +77,7 @@ public class ContaService {
             if (operacao.tipoConta.equals(tipoDaConta)) {
 
                 contas.setSaldo(this.deposito(contas.getSaldo(), operacao.valor));
-                listContas.add(contas);
+                listContas.add(this.gerarTransacao(contas, operacao.valor));
             }
         }
         Conta contaAtualizada = listContas.get(0);
@@ -116,7 +105,7 @@ public class ContaService {
             if (operacao.tipoContaOrigem.equals(tipoDaConta)) {
 
                 contas.setSaldo(this.saca(contas.getSaldo(), operacao.valor));
-                listContasOrigem.add(contas);
+                listContasOrigem.add(this.gerarTransacao(contas, operacao.valor));
             }
         }
         Conta contaAtualizadaOrigem = listContasOrigem.get(0);
@@ -132,7 +121,7 @@ public class ContaService {
             if (operacao.tipoContaDestino.equals(tipoDaConta)) {
 
                 contas.setSaldo(this.deposito(contas.getSaldo(), operacao.valor));
-                listContasDestino.add(contas);
+                listContasDestino.add(this.gerarTransacao(contas, operacao.valor));
             }
         }
         Conta contaAtualizadaDestino = listContasDestino.get(0);
@@ -140,7 +129,29 @@ public class ContaService {
         return this.contaRepository.save(contaAtualizadaDestino);
     }
 
+    private Conta gerarTransacao (Conta conta, BigDecimal saldo) {
+
+        Transacao transacaoNova = new Transacao();
+        transacaoNova.setValor(saldo);
+        Transacao transacao = this.transacaoService.salvarTransacao(transacaoNova);
+
+        List<Transacao> transacaoList = new ArrayList<>();
+
+        if (conta.getTransacoes() != null) {
+            transacaoList = conta.getTransacoes();
+        }
+
+        transacaoList.add(transacao);
+        conta.setTransacoes(transacaoList);
+
+        return conta;
+    }
+
     private BigDecimal deposito(BigDecimal valorAtual, BigDecimal valorDaOperacao) {
+        if (valorAtual == null) {
+            valorAtual = BigDecimal.ZERO;
+        }
+
         BigDecimal saldoAtual = valorAtual;
         BigDecimal saldoDaOperacao = valorDaOperacao;
         BigDecimal saldoAtualizado = saldoAtual.add(saldoDaOperacao);
@@ -149,6 +160,10 @@ public class ContaService {
     }
 
     private BigDecimal saca(BigDecimal valorAtual, BigDecimal valorDaOperacao) {
+        if (valorAtual == null) {
+            valorAtual = BigDecimal.ZERO;
+        }
+
         BigDecimal saldoAtual = valorAtual;
         BigDecimal saldoDaOperacao = valorDaOperacao;
         BigDecimal saldoAtualizado = saldoAtual.subtract(saldoDaOperacao);
